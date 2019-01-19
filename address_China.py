@@ -19,8 +19,30 @@ def get_address(lat, lng):
           '&output=json&pois=1&ak=xSoQ39HRAXfFBMEIAIv91A7txxXGmkDD'  # 构造URL
     data_address = urllib.request.urlopen(url)
     str_address = data_address.read().decode("utf-8")
-    address = json.loads(str_address)
+    json_address = json.loads(str_address)
+    address = json_address.get('result').get('addressComponent')
+    # 国家
+    country = address.get('country')
+    # 省
+    province = address.get('province')
+    # 城市
+    city = address.get('city')
+    dict_address = {}
+    dict_address['country'] = country
+    dict_address['province'] = province
+    dict_address['city'] = city
+    return dict_address
+
+
+def main():
+    lat = input("请输入纬度:")
+    lng = input("请输入经度:")
+    address = get_address(lat, lng)
+    if address['country'] == '中国':
+        print(address['province'], address['city'])
+    else:
+        print('国外')
 
 
 if __name__ == '__main__':
-    pass
+    main()
