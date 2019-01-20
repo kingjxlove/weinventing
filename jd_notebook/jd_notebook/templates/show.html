@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>INFO</title>
+</head>
+<body>
+{#<div class="info">#}
+{#    <table>#}
+{#        {% for good in goods %}#}
+{#            <tr>#}
+{#            <td>{{ good.name }}</td>#}
+{#            <td>{{ good.price }}</td>#}
+{#            </tr>#}
+{#        {% endfor %}#}
+{##}
+{#    </table>#}
+{#        <button>加载更多</button>#}
+{##}
+{#</div>#}
+
+
+<div class="pagination">
+    {% for good in page %}
+        <table>
+            <tr>
+                <td>{{ good.name }}</td>
+                <td>{{ good.price }}</td>
+            </tr>
+        </table>
+    {% endfor %}
+
+
+    <aside class="paging">
+        <a>当前{{ page.number }}页</a>
+        {% if page.has_previous %}
+            <a href="{% url 'goods:index' %}?page={{ page.previous_page_number }}">上一页</a>
+        {% endif %}
+        {% for i in page.paginator.page_range %}
+            <a href="{% url 'goods:index' %}?page={{ i }}">{{ i }}</a>
+        {% endfor %}
+        {% if page.has_next %}
+            <a href="{% url 'goods:index' %}?page={{ page.next_page_number }}">下一页</a>
+        {% endif %}
+        <a href="{% url 'goods:index' %}?page={{ page.paginator.num_pages }}">尾页</a>
+
+    </aside>
+</div>
+</body>
+<script>
+    $(document).ready(function () {
+
+        $.get('/goods/goods_info/', function (data) {
+
+        })
+
+</script>
+</html>

@@ -8,7 +8,7 @@ router = SimpleRouter()
 router.register(r'^info', views.NotebookView)
 
 urlpatterns = [
-
+    url(r'^goods_info/', views.index, name='index')
 ]
 
 urlpatterns += router.urls
