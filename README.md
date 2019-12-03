@@ -1,5 +1,5 @@
 # weinventing
-微银合创面试题
+测试
 #### 1. [通过经纬度获取地理位置](https://github.com/kingjxlove/weinventing/blob/master/address_China.py)
         通过控制台输入经纬度, 然后调用百度地图API来获取距离该经纬度最近的城市在控制台输出, 如果不在国内,则输出在国外
         ![运行效果](https://github.com/kingjxlove/img/blob/master/%E5%9C%B0%E7%90%86%E4%BD%8D%E7%BD%AE.jpg)
